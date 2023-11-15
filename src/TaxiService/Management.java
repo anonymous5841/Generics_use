@@ -26,8 +26,8 @@ public class Management <T>{
 
     public int Distance_Calculator(int i){
 
-        x = list.get(i).longitude_x - c.longitude_x;
-        y = list.get(i).latitude_y - c.latitude_y;
+        x =(int) list.get(i).longitude_x - (int)c.longitude_x;
+        y = (int)list.get(i).latitude_y - (int)c.latitude_y;
         return (int)Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
     }
 

@@ -1,22 +1,20 @@
 package TaxiService;
 
-import java.util.Objects;
-
 public class Taxi <T> {
 
     Status status;
 
    T license;
 
-    int longitude_x;
+    T longitude_x;
 
-    int latitude_y;
+    T latitude_y;
 
 
     public Taxi() {
     }
 
-    public Taxi(Status status,T license, int longitude_x,int latitude_y) {
+    public Taxi(Status status,T license, T longitude_x,T latitude_y) {
         this.status = status;
         this.license = license;
         this.longitude_x = longitude_x;
