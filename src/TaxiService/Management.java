@@ -6,7 +6,7 @@ public class Management <T>{
 
     ArrayList<Taxi> list = new ArrayList<>(4);
     Customer c;
-   int location  = 10000;
+    double location;
     int x , y;
     Taxi taxi;
     Status s = Status.AVAILABLE;
@@ -24,36 +24,37 @@ public class Management <T>{
         list.add(taxi);
     }
 
-    public int Distance_Calculator(int i){
+    public double Distance_Calculator(int i){
 
-        x =(int) list.get(i).longitude_x - (int)c.longitude_x;
+        x = (int)list.get(i).longitude_x - (int)c.longitude_x;
         y = (int)list.get(i).latitude_y - (int)c.latitude_y;
-        return (int)Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+        return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
     }
 
 
     public String Nearest_taxi(Customer c){
         this.c = c;
-        int location1;
+        double location1;
         int x1=0;
 
-        for (int i = 0; i < list.size(); i++) {
+        location = Distance_Calculator(0);
+
+        for (int i = 1; i < list.size(); i++) {
 
             location1 = Distance_Calculator(i);
 
             if (location > location1 && list.get(i).status.getValue() == 1) {
-
                 location = location1;
                 x1 = i;
             }
         }
 
-        return  "Taxi that is near to your location is: \n" + list.get(x1) +", Distance= " + Distance_Calculator(x1) + "mile" + ", Fair= " + "Rs." + Fair_calculation() + "\n";
+        return  "Taxi that is near to your location is: \n" + list.get(x1) +", Distance= " + (int)Distance_Calculator(x1) + " mile" + ", Fair= " + "Rs." + Fair_calculation() + "\n";
     }
 
     public Object Fair_calculation(){
 
-        c.Fair = 23 * location;
+        c.Fair =(int) (23 * location);
         return c.Fair;
     }
 
@@ -75,7 +76,7 @@ public class Management <T>{
             }
         }
 
-        System.out.println("Sorted List:");
+        System.out.println("Sorted List from nearest to farthest:");
         for (Taxi t: list) {
 
             System.out.println(t);

@@ -23,16 +23,16 @@ public class Taxi <T> {
     }
 
 
-//    @Override
-//    public boolean equals(Object obj) {
-//
-//        if(obj == this.status){
-//            return true;
-//        }
-//        else {
-//            return false;
-//        }
-//    }
+    @Override
+    public boolean equals(Object obj) {
+        Taxi t = (Taxi)obj;
+        if(t.license == this.license){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
 
     @Override
